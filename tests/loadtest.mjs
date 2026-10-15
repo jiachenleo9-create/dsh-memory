@@ -67,8 +67,13 @@ check('apply() 注册了四个记忆工具', registered.size === 4, [...register
 
 // 确认依赖确实解析到了 profile 的 node_modules，而不是测试垫片
 const realCordis = readFileSync(`${INSTALL_DIR}\\package.json`, 'utf8')
+const manifest = JSON.parse(realCordis)
 check('package.json 声明 bundle patch', realCordis.includes('cordis.patch.yml'))
-check('package.json 是 private', JSON.parse(realCordis).private === true)
+// 仓库是公开发布的，所以**不再**要求 private —— 这里只确认清单结构完整。
+check('package.json 有 name/version', typeof manifest.name === 'string' && typeof manifest.version === 'string',
+  `${manifest.name}@${manifest.version}`)
+check('package.json 声明 MIT 许可', manifest.license === 'MIT', manifest.license)
+check('dsh.bundle.patch 指向正确', manifest.dsh?.bundle?.patch === './cordis.patch.yml')
 
 console.log(`\n${'='.repeat(72)}`)
 console.log(`结果：${passed} 通过 / ${failed} 失败 / 共 ${passed + failed} 项`)
