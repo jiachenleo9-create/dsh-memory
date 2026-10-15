@@ -351,7 +351,7 @@ l1PollEveryTurns: 0     # 也关掉 L1 轮询
 ### 步骤
 
 ```powershell
-git clone https://github.com/<你的用户名>/dsh-memory.git
+git clone https://github.com/jiachenleo9-create/dsh-memory.git
 cd dsh-memory
 
 # 先看会改什么（推荐）
