@@ -29,6 +29,8 @@ const here = dirname(fileURLToPath(import.meta.url))
  *   - `audit.mjs`：跨工作区审计必须发现全部工作区（漏一个=失明）。
  *   - `duties-gate-poll.mjs`：归档闸门 + L1 轮询；含"被拒绝的归档
  *     不能推进边界"的**死循环回归**。
+ *   - `l1-location.mjs`：新用户最常问的「我的记忆库在哪？」——
+ *     四种环境下的落点 + 自动建库 + 不覆盖已有内容。
  * `loadtest.mjs` 从真实安装位置加载，验证依赖解析与挂载。
  */
 const suites = [
@@ -39,6 +41,7 @@ const suites = [
   'late-mount.mjs',
   'privacy-precision.mjs',
   'duties-gate-poll.mjs',
+  'l1-location.mjs',
   'tool-output-json.mjs',
   'task-rotation.mjs',
   'integrity.mjs',

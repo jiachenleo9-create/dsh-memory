@@ -63,7 +63,7 @@ if (-not (Test-Path -LiteralPath $modulesDir)) {
 }
 Write-Ok "profile 结构完整"
 
-$shipped = @('lib', 'cordis.patch.yml', 'package.json', 'README.md')
+$shipped = @('lib', 'docs', 'cordis.patch.yml', 'package.json', 'README.md')
 foreach ($item in $shipped) {
   if (-not (Test-Path -LiteralPath (Join-Path $source $item))) { throw "源缺失：$item" }
 }
