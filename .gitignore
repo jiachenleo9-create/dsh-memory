@@ -1,0 +1,17 @@
+# 依赖与测试垫片
+node_modules/
+
+# 记忆数据（绝不入库——这是每个人的私人记忆）
+.dsh/memory/
+*.bak-migrate
+*.bak-*
+
+# 临时与日志
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# 编辑器
+.vscode/
+.idea/

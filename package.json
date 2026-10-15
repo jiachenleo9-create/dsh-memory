@@ -1,0 +1,51 @@
+{
+  "name": "dsh-memory",
+  "version": "0.3.0",
+  "description": "DSH 四层自动记忆系统：会话开始自动读取记忆、长任务目标锚定防遗忘、每轮结束自动沉淀、跨工作区审计。纯 Markdown、零依赖。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "tools",
+    "tests",
+    "cordis.patch.yml",
+    "install.ps1",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node tests/run-all.mjs",
+    "test:selftest": "node tests/selftest.mjs",
+    "test:integrity": "node tests/integrity.mjs",
+    "test:audit": "node tests/audit.mjs"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "agent-memory",
+    "long-term-memory",
+    "context-engineering",
+    "local-first",
+    "markdown",
+    "plugin",
+    "ai-agent"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.4"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

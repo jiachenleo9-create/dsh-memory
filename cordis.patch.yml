@@ -1,0 +1,33 @@
+# dsh-memory bundle layer.
+#
+# 四层自动记忆系统（自动读取 + 目标锚定 + 自动沉淀）：
+#
+#   L1 全局长期记忆   <memoryRoot>/MEMORY.md 入口 + 分类文件（跨工作区共享）
+#   L2 工作区记忆端口  <workspace>/.dsh/memory/WORKSPACE.md（这个工作区是做什么的／规范／踩坑）
+#   L3 任务档案       <workspace>/.dsh/memory/ACTIVE.md + archive/（任务目标与进度）
+#   L4 会话轨迹       <workspace>/.dsh/memory/sessions/（本轮做了啥，可丢）
+#
+# 开箱即用：不配置任何东西也能跑。
+#   memoryRoot 默认落在 <DSH_HOME>/memory；不存在时会自动建一套带填写指引的骨架。
+#
+# 想用自己的记忆库 / 调参数，在 profile 的 cordis.patch.yml 里加一行覆盖：
+#
+#   - id: memory
+#     name: 'dsh-memory'
+#     config:
+#       memoryRoot: 'D:\我的记忆库'      # 已有记忆库就指过去；留空用默认
+#       workspaceDir: '.dsh/memory'      # L2/L3 在工作区里的位置
+#       autoRead: true                   # 会话开始注入记忆简报
+#       autoAnchor: true                 # 目标锚定
+#       anchorEveryTurns: 10             # 每 N 轮重述目标；0 = 只在压缩后
+#       autoHarvest: true                # 每轮机械采集（零 token）
+#       steerOnHarvest: true             # 条件式沉淀提醒
+#       l1PollEveryTurns: 4              # 每 N 轮检查是否该往 L1 写；0 = 关闭
+#       archiveGate: true                # 归档前闸门：没沉淀过 L1 就拦下
+#       privacyGuard: true               # 隐私红线自检
+#
+# 完整字段见 README 的「配置」一节。
+
+- insert:
+    - id: memory
+      name: 'dsh-memory'
